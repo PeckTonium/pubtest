@@ -18,7 +18,8 @@ phases:
 #      - mvn install
   post_build:
     commands:
-      - zip lambdatest.zip file1.py
+      - echo which zip: `which zip`
+      - zip lambdatest file1.py
       - echo Build completed on `date`
 artifacts:
   files:
