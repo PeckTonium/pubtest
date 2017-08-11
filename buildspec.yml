@@ -18,8 +18,9 @@ phases:
 #      - mvn install
   post_build:
     commands:
+      - zip lambdatest.zip file1.py
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/messageUtil-1.0.jar
+    - lambdatest.zip
   discard-paths: yes
