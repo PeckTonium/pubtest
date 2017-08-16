@@ -5,6 +5,7 @@ set -e
 # We can't use buildspec files, because they must be at the root of the repo
 
 echo "==============="
+man ls | cat
 #ls -l /usr/bin/zip
 echo "/usr:"
 ls -C /usr
