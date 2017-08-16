@@ -22,7 +22,8 @@ echo "About to ls /usr/bin/zip:"
 
 #sudo apt-get install zip_3.0-11_amd64.deb
 #sudo apt-get install zip_3.0-11_amd64
-sudo apt-get install ./zip_3.0-11_amd64.deb
+#sudo apt-get install ./zip_3.0-11_amd64.deb
+sudo apt-get install ./zip_3.0-11_amd64
 
 
 #sudo apt-get install lzip
