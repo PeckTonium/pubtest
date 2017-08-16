@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 #
 # buildspec.sh
 # We can't use buildspec files, because they must be at the root of the repo
