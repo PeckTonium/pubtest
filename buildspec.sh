@@ -16,6 +16,7 @@ cd $source_path
 TOPDIR=`pwd`
 ARTIFACT=lambdapackage.zip
 ZIPBINARY='sh -c "exec /usr/bin/zip"'
+ZIPBINARY=/usr/bin/zip
 
 # install
 python2.7 -m pip install virtualenv
