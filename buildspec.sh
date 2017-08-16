@@ -19,6 +19,10 @@ echo "About to ls /usr/bin:"
 echo
 echo "About to ls /usr/bin/zip:"
 #ls -l /usr/bin/zip
+
+#sudo apt-get install zip_3.0-11_amd64.deb
+sudo apt-get install zip_3.0-11_amd64
+
 #echo "About to curl -o- http://mirrors.kernel.org/ubuntu/pool/universe/l/lzip/lzip_1.18-5_amd64.deb | dpkg --install"
 #curl -o- http://mirrors.kernel.org/ubuntu/pool/universe/l/lzip/lzip_1.18-5_amd64.deb | dpkg --install
 echo "==============="
@@ -40,7 +44,7 @@ pip install --upgrade pip
 
 echo "===="
 #sudo apt-get install lzip
-sudo apt-get install ./lzip_1.18-5_amd64.deb
+#sudo apt-get install ./lzip_1.18-5_amd64.deb
 #sudo apt-get install lzip
 #sudo apt-get install xz-utils
 
