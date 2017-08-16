@@ -6,16 +6,16 @@ set -e
 
 echo "==============="
 echo "/usr:"
-ls /usr
+ls -C /usr
 echo
 echo "/usr/bin:"
-ls /usr/bin
+ls -C /usr/bin
 echo
 echo "bin:"
-ls /bin
+ls -C /bin
 echo
 echo "/sbin:"
-ls /sbin
+ls -C /sbin
 echo "==============="
 
 
