@@ -5,19 +5,6 @@ set -e
 # We can't use buildspec files, because they must be at the root of the repo
 
 echo "==============="
-man ls | cat
-#ls -l /usr/bin/zip
-echo "/usr:"
-ls -C /usr
-echo
-echo "/usr/bin:"
-ls -C /usr/bin
-echo
-echo "bin:"
-ls -C /bin
-echo
-echo "/sbin:"
-ls -C /sbin
 echo "==============="
 
 
@@ -32,6 +19,7 @@ ARTIFACT=lambdapackage.zip
 # install
 python2.7 -m pip install virtualenv
 pip install --upgrade pip
+apt-get install zip
 
 # pre_build steps
 virtualenv --python=python2.7 venv
