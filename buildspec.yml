@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+#    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
 
 phases:
   install:
@@ -11,15 +11,22 @@ phases:
 #      - apt-get install -y maven
   pre_build:
     commands:
-#      - echo Nothing to do in the pre_build phase...
+      - buildparam_topdir=`pwd`
+      - virtualenv --python=python2.7 --no-setuptools --no-wheel venv
+      - venv/bin/pip install -r requirements.txt
   build:
     commands:
       - echo Build started on `date`
+      - cd venv/lib/python2.7/site-packages
+      - zip -9 --recurse-paths $buildparam_topdir/lambdapackage.zip *
+      - cd $buildparam_topdir
+      - zip --grow $buildparam_topdir/lambdapackage.zip lambda_function.py
 #      - mvn install
   post_build:
     commands:
+      - ls
+      - echo "Buildparam_topdir=$buildparam_topdir"
       - echo Build completed on `date`
 artifacts:
   files:
-    - file1.py
   discard-paths: yes
