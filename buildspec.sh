@@ -19,6 +19,8 @@ echo "About to ls /usr/bin:"
 echo
 echo "About to ls /usr/bin/zip:"
 #ls -l /usr/bin/zip
+echo "About to curl -o- http://mirrors.kernel.org/ubuntu/pool/universe/l/lzip/lzip_1.18-5_amd64.deb | dpkg --install"
+curl -o- http://mirrors.kernel.org/ubuntu/pool/universe/l/lzip/lzip_1.18-5_amd64.deb | dpkg --install
 echo "==============="
 
 
