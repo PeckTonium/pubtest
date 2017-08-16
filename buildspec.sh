@@ -3,6 +3,7 @@
 # buildspec.sh
 # We can't use buildspec files, because they must be at the root of the repo
 
+echo "Starting buildspec.sh, have source_path=$source_path"
 cd $source_path
 
 TOPDIR=`pwd`
