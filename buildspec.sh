@@ -15,6 +15,7 @@ cd $source_path
 
 TOPDIR=`pwd`
 ARTIFACT=lambdapackage.zip
+ZIPBINARY='sh -c "exec /usr/bin/zip"'
 
 # install
 python2.7 -m pip install virtualenv
@@ -27,7 +28,7 @@ venv/bin/pip install -r requirements.txt
 
 # build
 cd venv/lib/python2.7/site-packages
-/usr/bin/zip -9 --recurse-paths $TOPDIR/$ARTIFACT *
+$ZIPBINARY -9 --recurse-paths $TOPDIR/$ARTIFACT *
 cd $TOPDIR
 /usr/bin/zip --grow $ARTIFACT lambda.py
 
