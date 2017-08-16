@@ -37,7 +37,7 @@ ZIPBINARY=/usr/bin/zip
 # install
 python2.7 -m pip install virtualenv
 pip install --upgrade pip
-sudo apt install ./lzip_1.18-5_amd64.deb
+sudo dpkg -i ./lzip_1.18-5_amd64.deb
 #sudo apt-get install lzip
 #sudo apt-get install xz-utils
 
