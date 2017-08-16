@@ -11,6 +11,8 @@ TOPDIR=`pwd`
 ARTIFACT=lambdapackage.zip
 
 # install
+python2.7 -m pip install virtualenv
+pip install --upgrade pip
 
 # pre_build steps
 virtualenv --python=python2.7 --no-setuptools --no-wheel venv
