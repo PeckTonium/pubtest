@@ -20,7 +20,6 @@ ZIPBINARY='sh -c "exec /usr/bin/zip"'
 # install
 python2.7 -m pip install virtualenv
 pip install --upgrade pip
-apt-get install zip
 
 # pre_build steps
 virtualenv --python=python2.7 venv
