@@ -4,6 +4,23 @@ set -e
 # buildspec.sh
 # We can't use buildspec files, because they must be at the root of the repo
 
+echo "==============="
+echo "/usr:"
+ls /usr
+echo
+echo "/usr/bin:"
+ls /usr/bin
+echo
+echo "bin:"
+ls /bin
+echo
+echo "/sbin:"
+ls /sbin
+echo "==============="
+
+
+
+
 echo "Starting buildspec.sh, have source_path=$source_path"
 cd $source_path
 
