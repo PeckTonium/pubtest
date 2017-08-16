@@ -29,4 +29,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
+    - file1.py
   discard-paths: yes
