@@ -20,9 +20,9 @@ venv/bin/pip install -r requirements.txt
 
 # build
 cd venv/lib/python2.7/site-packages
-zip -9 --recurse-paths $TOPDIR/$ARTIFACT *
+/usr/bin/zip -9 --recurse-paths $TOPDIR/$ARTIFACT *
 cd $TOPDIR
-zip --grow $ARTIFACT lambda.py
+/usr/bin/zip --grow $ARTIFACT lambda.py
 
 # post_build
 # copy to s3
