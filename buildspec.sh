@@ -14,6 +14,7 @@ echo "Starting buildspec.sh, have source_path=$source_path"
 cd $source_path
 echo $PATH
 #export PATH="/usr/bin:/bin:$PATH"
+ls -l /usr/bin/zip
 TOPDIR=`pwd`
 ARTIFACT=lambdapackage.zip
 ZIPBINARY='sh -c "exec /usr/bin/zip"'
