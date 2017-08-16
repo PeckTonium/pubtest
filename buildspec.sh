@@ -9,16 +9,16 @@ echo "path=$PATH"
 which zip
 echo
 echo "About to ls /:"
-ls -l /
+#ls -l /
 echo
 echo "About to ls /usr:"
-ls -l /usr
+#ls -l /usr
 echo
 echo "About to ls /usr/bin:"
-ls -l /usr/bin
+#ls -l /usr/bin
 echo
 echo "About to ls /usr/bin/zip:"
-ls -l /usr/bin/zip
+#ls -l /usr/bin/zip
 echo "==============="
 
 
@@ -35,6 +35,7 @@ ZIPBINARY=/usr/bin/zip
 # install
 python2.7 -m pip install virtualenv
 pip install --upgrade pip
+sudo apt-get install zip unzip
 
 # pre_build steps
 virtualenv --python=python2.7 venv
