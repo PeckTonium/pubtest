@@ -39,8 +39,8 @@ python2.7 -m pip install virtualenv
 pip install --upgrade pip
 
 echo "===="
-sudo apt-get install lzip
-#sudo dpkg -i ./lzip_1.18-5_amd64.deb
+#sudo apt-get install lzip
+sudo apt-get install ./lzip_1.18-5_amd64.deb
 #sudo apt-get install lzip
 #sudo apt-get install xz-utils
 
