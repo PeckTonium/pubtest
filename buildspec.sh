@@ -1,10 +1,24 @@
 #!/bin/sh
-set -e
+#set -e
 #
 # buildspec.sh
 # We can't use buildspec files, because they must be at the root of the repo
 
 echo "==============="
+echo "path=$PATH"
+which zip
+echo
+echo "About to ls /:"
+ls -l /
+echo
+echo "About to ls /usr:"
+ls -l /usr
+echo
+echo "About to ls /usr/bin:"
+ls -l /usr/bin
+echo
+echo "About to ls /usr/bin/zip:"
+ls -l /usr/bin/zip
 echo "==============="
 
 
@@ -12,9 +26,7 @@ echo "==============="
 
 echo "Starting buildspec.sh, have source_path=$source_path"
 cd $source_path
-echo $PATH
-#export PATH="/usr/bin:/bin:$PATH"
-ls -l /usr/bin/zip
+
 TOPDIR=`pwd`
 ARTIFACT=lambdapackage.zip
 ZIPBINARY='sh -c "exec /usr/bin/zip"'
