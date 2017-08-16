@@ -15,7 +15,7 @@ python2.7 -m pip install virtualenv
 pip install --upgrade pip
 
 # pre_build steps
-virtualenv --python=python2.7 --no-setuptools --no-wheel venv
+virtualenv --python=python2.7 venv
 venv/bin/pip install -r requirements.txt
 
 # build
