@@ -29,18 +29,15 @@ venv/bin/pip install -r requirements.txt
 echo "Build"
 cd venv/lib/python2.7/site-packages
 $ZIPBINARY --quiet -9 --recurse-paths $TOPDIR/$ARTIFACT *
-echo "== contents of zip file"
-unzip -l $TOPDIR/$ARTIFACT
+$ZIPBINARY --show-files $ARTIFACT | tail
 echo "== adding lambda"
 cd $TOPDIR
-$ZIPBINARY --grow -9 $ARTIFACT lambda.py
-echo "== contents of zip file"
-unzip -l $TOPDIR/$ARTIFACT
+$ZIPBINARY -9 $ARTIFACT lambda.py
 
 echo "===="
 ls -l
 echo "===="
-$ZIPBINARY --show-files $ARTIFACT
+$ZIPBINARY --show-files $ARTIFACT | tail
 echo "===="
 
 # post_build
