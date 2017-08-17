@@ -4,29 +4,6 @@
 # buildspec.sh
 # We can't use buildspec files, because they must be at the root of the repo
 
-wget http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
-ls -l 
-#sudo dpkg -i zip_3.0-8_amd64.deb
-which zip
-echo "== Contents of /etc/apt/sources.lst"
-cat /etc/apt/sources.list
-echo "==== Adding to sources"
-echo "deb http://mirrors.kernel.org/ubuntu/ trusty main" >> /etc/apt/sources.list
-#deb http://archive.ubuntu.com/ubuntu/ trusty-security universe
-echo "== Contents of /etc/apt/sources.lst"
-cat /etc/apt/sources.list
-echo "==About to apt-cache search zip"
-sudo apt-cache search zip
-echo "==About to install unzip"
-sudo apt-get install unzip
-echo "==About to install zip"
-sudo apt-get install zip
-which zip
-
-echo "==============="
-
-
-
 echo "Starting buildspec.sh, have source_path=$source_path"
 cd $source_path
 
@@ -36,25 +13,31 @@ ZIPBINARY='sh -c "exec /usr/bin/zip"'
 ZIPBINARY=/usr/bin/zip
 
 # install
+echo "Installing zip..."
+wget http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
+sudo dpkg -i zip_3.0-8_amd64.deb
+echo "Installing virtualenv, upgrading pip"
 python2.7 -m pip install virtualenv
 pip install --upgrade pip
 
-echo "===="
-
 # pre_build steps
+echo "Pre-build"
 virtualenv --python=python2.7 venv
 venv/bin/pip install -r requirements.txt
 
 # build
+echo "Build"
 cd venv/lib/python2.7/site-packages
 $ZIPBINARY --quiet ---display-dots 9 --recurse-paths --output-file $TOPDIR/$ARTIFACT *
 cd $TOPDIR
-$ZIPBINARY  -9 $ARTIFACT lambda.py
+$ZIPBINARY --grow -9 $ARTIFACT lambda.py
 
 echo "===="
 ls -l
 echo "===="
 $ZIPBINARY --show-files $ARTIFACT
 echo "===="
+
 # post_build
+echo "Post-Build"
 # copy to s3
