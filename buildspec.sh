@@ -1,5 +1,5 @@
 #!/bin/sh
-#set -e
+set -e
 #
 # buildspec.sh
 # We can't use buildspec files, because they must be at the root of the repo
@@ -24,6 +24,9 @@ pip install --upgrade pip
 echo "Pre-build"
 virtualenv --python=python2.7 venv
 venv/bin/pip install -r requirements.txt
+
+venv/bin/pip install semver
+ARTIFACT=`sh ./nextbuildver.sh "$ARTIFACT"`
 
 # build
 echo "Build"
