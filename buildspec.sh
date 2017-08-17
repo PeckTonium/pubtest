@@ -9,6 +9,9 @@ ls -l
 #sudo dpkg -i zip_3.0-8_amd64.deb
 which zip
 sudo apt-cache search zip
+echo "About to install unzip"
+sudo apt-get install unzip
+echo "About to install zip"
 sudo apt-get install zip
 which zip
 
