@@ -35,8 +35,6 @@ cd $TOPDIR
 $ZIPBINARY -9 $ARTIFACT lambda.py
 
 echo "===="
-ls -l
-echo "===="
 $ZIPBINARY --show-files $ARTIFACT | tail
 echo "===="
 
