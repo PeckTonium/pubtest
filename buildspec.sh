@@ -34,8 +34,9 @@ sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_
 echo "About to 2.5"
 sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip*
 echo "About to 3"
-wget -O- http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
+wget http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
 ls -l 
+sudo dpkg -i zip_3.0-8_amd64.deb
 
 
 
