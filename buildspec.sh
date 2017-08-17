@@ -28,16 +28,16 @@ echo "About to ls /usr/bin/zip:"
 
 more /etc/os-release
 echo "About to 1"
-curl -o- http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb | dpkg --install
+#curl -o- http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb | dpkg --install
 echo "About to 2"
-sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
+#sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
 echo "About to 2.5"
-sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip*
+#sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip*
 echo "About to 3"
 wget http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
 ls -l 
 sudo dpkg -i zip_3.0-8_amd64.deb
-
+which zip
 
 
 #sudo apt-get install lzip
