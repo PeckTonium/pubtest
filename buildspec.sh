@@ -8,6 +8,7 @@ wget http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
 ls -l 
 #sudo dpkg -i zip_3.0-8_amd64.deb
 which zip
+sudo apt-get search zip
 sudo apt-get install zip
 which zip
 
