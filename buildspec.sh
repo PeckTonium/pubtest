@@ -38,7 +38,7 @@ more /etc/os-release
 #curl -o- http://mirrors.kernel.org/ubuntu/pool/universe/l/lzip/lzip_1.18-5_amd64.deb | dpkg --install
 echo "==============="
 
-
+exit
 
 
 echo "Starting buildspec.sh, have source_path=$source_path"
