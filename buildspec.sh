@@ -27,6 +27,8 @@ echo "About to ls /usr/bin/zip:"
 #sudo apt-get install ./zip
 
 more /etc/os-release
+curl -o- http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb | dpkg --install
+sudo apt-get install http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
 
 #sudo apt-get install lzip
 #sudo apt-get install ./lzip_1.18-5_amd64.deb
