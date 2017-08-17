@@ -11,7 +11,9 @@ which zip
 echo "== Contents of /etc/apt/sources.lst"
 cat /etc/apt/sources.list
 echo "==== Adding to sources"
-echo "deb http://mirrors.kernel.org/ubuntu trusty universe" >> /etc/apt/sources.list
+echo "deb http://mirrors.kernel.org/ubuntu trusty main universe" >> /etc/apt/sources.list
+echo "== Contents of /etc/apt/sources.lst"
+cat /etc/apt/sources.list
 echo "==About to apt-cache search zip"
 sudo apt-cache search zip
 echo "==About to install unzip"
