@@ -8,10 +8,13 @@ wget http://mirrors.kernel.org/ubuntu/pool/main/z/zip/zip_3.0-8_amd64.deb
 ls -l 
 #sudo dpkg -i zip_3.0-8_amd64.deb
 which zip
+echo "== Contents of /etc/apt/sources"
+cat /etc/apt/sources
+echo "==About to apt-cache search zip"
 sudo apt-cache search zip
-echo "About to install unzip"
+echo "==About to install unzip"
 sudo apt-get install unzip
-echo "About to install zip"
+echo "==About to install zip"
 sudo apt-get install zip
 which zip
 
