@@ -33,12 +33,14 @@ venv/bin/pip install -r requirements.txt
 
 # build
 cd venv/lib/python2.7/site-packages
-$ZIPBINARY --quiet -9 --recurse-paths --output-file $TOPDIR/$ARTIFACT *
+$ZIPBINARY --quiet ---display-dots 9 --recurse-paths --output-file $TOPDIR/$ARTIFACT *
 cd $TOPDIR
-$ZIPBINARY --grow -9 $ARTIFACT lambda.py
+$ZIPBINARY  -9 $ARTIFACT lambda.py
 
 echo "===="
 ls -l
+echo "===="
+$ZIPBINARY --show-files $ARTIFACT
 echo "===="
 # post_build
 # copy to s3
