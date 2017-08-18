@@ -33,8 +33,7 @@ phases:
       - zip -9 ../$artifact_name.zip lambda_function.py
       - cd ..
       - zip --show-files $artifact_name | tail
-      - ls -l
-      - mv $artifact_name.zip `python nextbuildver.py "$artifact_name"`.zip
+      - mv $artifact_name.zip `venv/bin/python nextbuildver.py "$artifact_name"`.zip
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
