@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    source_path: "engagement/email"
+    source_path: "./engagement/email"
     artifact_name: "lambda-email"
     s3_bucket_name: "whiskerlabs-buildrepository"
     s3_bucket_directory: "engage/email"
@@ -18,7 +18,7 @@ phases:
       - pip install --upgrade pip
   pre_build:
     commands:
-      - pwd && echo "source_path=$source_path" && ls -R
+      - pwd && echo "source_path=$source_path" && ls -R $sourcepath && ls -R
       - cd $source_path && virtualenv --python=python2.7 venv
       - cd $source_path && venv/bin/pip install -r compilation/requirements.txt
       - cd $source_path && venv/bin/pip install semver
