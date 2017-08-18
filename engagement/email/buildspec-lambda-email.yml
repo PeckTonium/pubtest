@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    source_path: "./engagement/email"
+    source_path: "engagement/email"
     artifact_name: "lambda-email"
     s3_bucket_name: "whiskerlabs-buildrepository"
     s3_bucket_directory: "engage/email"
@@ -18,8 +18,7 @@ phases:
       - pip install --upgrade pip
   pre_build:
     commands:
-      - cd $source_path && ls -R && echo "============="
-      - pwd
+      - cd $source_path
       - virtualenv --python=python2.7 venv
       - venv/bin/pip install -r compilation/requirements.txt
       - venv/bin/pip install semver
@@ -32,8 +31,7 @@ phases:
       - echo "Adding lambda"
       - cd ./compilation
       - zip -9 ../$artifact_name lambda_function.py
-      - cd .. && pwd && ls
-      - mv $artifact_name `sh ./nextbuildver.sh "$artifact_name"`.zip
+      - mv $artifact_name `python nextbuildver.py "$artifact_name"`.zip
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
