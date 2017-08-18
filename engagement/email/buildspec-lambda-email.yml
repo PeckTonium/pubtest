@@ -30,7 +30,7 @@ phases:
       - cd ../../../..
       - zip --show-files $artifact_name | tail
       - echo "Adding lambda"
-      - zip -9 $artifact_name lambda.py
+      - zip -9 $artifact_name lambda_function.py
       - mv $artifact_name `sh ./nextbuildver.sh "$artifact_name"`.zip
   post_build:
     commands:
