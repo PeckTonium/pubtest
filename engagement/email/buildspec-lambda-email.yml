@@ -32,6 +32,7 @@ phases:
       - echo "Adding lambda"
       - cd ./compilation
       - zip -9 ../$artifact_name lambda_function.py
+      - cd ..
       - mv $artifact_name `sh ./nextbuildver.sh "$artifact_name"`.zip
   post_build:
     commands:
