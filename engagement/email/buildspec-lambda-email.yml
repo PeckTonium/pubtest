@@ -33,7 +33,8 @@ phases:
       - zip -9 ../$artifact_name.zip lambda_function.py
       - cd ..
       - zip --show-files $artifact_name | tail
-      - echo "\$artifact_name*: " `ls $artifact_name*`
+      - echo "\$artifact_name=$artifact_name"
+      - ls $artifact_name*
       - mv $artifact_name.zip "`venv/bin/python nextbuildver.py "$artifact_name"`.zip"
   post_build:
     commands:
