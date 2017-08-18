@@ -19,13 +19,14 @@ phases:
   pre_build:
     commands:
       - virtualenv --python=python2.7 venv
+      - pwd && ls -R
       - venv/bin/pip install -r compilation/requirements.txt
       - venv/bin/pip install semver
   build:
     commands:
       - echo "Zipping dependencies"
       - cd venv/lib/python2.7/site-packages
-      - zip --quiet -9 --recurse-paths $TOPDIR/$artifact_name *
+      - zip --quiet -9 --recurse-paths ../../../../$artifact_name *
       - zip --show-files $artifact_name | tail
       - echo "Adding lambda"
       - cd $TOPDIR
