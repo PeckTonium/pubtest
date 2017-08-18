@@ -18,7 +18,8 @@ phases:
       - pip install --upgrade pip
   pre_build:
     commands:
-      - pwd ls -R && echo "=============" && echo "source_path=$source_path" && ls -R $sourcepath
+      - pwd && ls -R && echo "=============" && echo "source_path=$source_path" && ls -R $sourcepath
+      - cd $source_path && ls -R && echo "============="
       - cd $source_path && virtualenv --python=python2.7 venv
       - cd $source_path && venv/bin/pip install -r compilation/requirements.txt
       - cd $source_path && venv/bin/pip install semver
