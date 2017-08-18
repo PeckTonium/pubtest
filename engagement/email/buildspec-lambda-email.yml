@@ -31,7 +31,7 @@ phases:
       - echo "Adding lambda"
       - cd ./compilation
       - zip -9 ../$artifact_name lambda_function.py
-      - mv $artifact_name `python nextbuildver.py "$artifact_name"`.zip
+      - mv $artifact_name.zip `python nextbuildver.py "$artifact_name"`.zip
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
