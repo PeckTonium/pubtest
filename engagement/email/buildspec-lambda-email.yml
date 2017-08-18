@@ -20,17 +20,18 @@ phases:
     commands:
       - cd $source_path && ls -R && echo "============="
       - pwd
-      - cd $source_path && virtualenv --python=python2.7 venv
-      - cd $source_path && venv/bin/pip install -r compilation/requirements.txt
-      - cd $source_path && venv/bin/pip install semver
+      - virtualenv --python=python2.7 venv
+      - venv/bin/pip install -r compilation/requirements.txt
+      - venv/bin/pip install semver
   build:
     commands:
       - echo "Zipping dependencies"
-      - cd $source_path/venv/lib/python2.7/site-packages && zip --quiet -9 --recurse-paths ../../../../$artifact_name *
-      - cd $source_path && zip --show-files $artifact_name | tail
+      - cd $source_path
+      - cd venv/lib/python2.7/site-packages && zip --quiet -9 --recurse-paths ../../../../$artifact_name *
+      - zip --show-files $artifact_name | tail
       - echo "Adding lambda"
-      - cd $source_path && zip -9 $artifact_name lambda.py
-      - cd $source_path && mv $artifact_name `sh ./nextbuildver.sh "$artifact_name"`.zip
+      - zip -9 $artifact_name lambda.py
+      - mv $artifact_name `sh ./nextbuildver.sh "$artifact_name"`.zip
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
