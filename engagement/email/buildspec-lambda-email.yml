@@ -26,10 +26,10 @@ phases:
   build:
     commands:
       - echo "Zipping dependencies"
-      - cd $source_path
       - cd venv/lib/python2.7/site-packages && zip --quiet -9 --recurse-paths ../../../../$artifact_name *
       - zip --show-files $artifact_name | tail
       - echo "Adding lambda"
+      - cd ../../../..
       - zip -9 $artifact_name lambda.py
       - mv $artifact_name `sh ./nextbuildver.sh "$artifact_name"`.zip
   post_build:
