@@ -22,6 +22,7 @@ phases:
       - virtualenv --python=python2.7 venv
       - venv/bin/pip install -r compilation/requirements.txt
       - venv/bin/pip install semver
+      - next_ver=`./nextbuildver.py --bucket_name=$s3_bucket_name --bucket_dir=$s3_bucket_directory --artifact_name=$artifact_name`
   build:
     commands:
       - echo "Zipping dependencies"
@@ -35,7 +36,8 @@ phases:
       - zip --show-files $artifact_name | tail
       - echo "\$artifact_name=$artifact_name"
       - ls $artifact_name*
-      - mv $artifact_name.zip "`venv/bin/python nextbuildver.py "$artifact_name"`.zip"
+      - #mv $artifact_name.zip "`venv/bin/python nextbuildver.py "$artifact_name"`.zip"
+      - mv $artifact_name.zip $next_ver.zip
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
