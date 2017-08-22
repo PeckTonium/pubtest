@@ -26,7 +26,8 @@ virtualenv --python=python2.7 venv
 venv/bin/pip install -r requirements.txt
 
 venv/bin/pip install semver
-ARTIFACT=`sh ./nextbuildver.sh "$ARTIFACT"`
+#ARTIFACT=`sh ./nextbuildver.sh "$ARTIFACT"`
+NEXTVER=`sh ./nextbuildver.sh --bucket_name=lambda-admin-pubtest3 --bucket_dir=lambda-email --artifact_name=$ARTIFACT`
 
 # build
 echo "Build"
@@ -36,6 +37,10 @@ $ZIPBINARY --show-files $TOPDIR/$ARTIFACT | tail
 echo "== adding lambda"
 cd $TOPDIR
 $ZIPBINARY -9 $ARTIFACT lambda.py
+# Magic time
+BASE_FNAME=`echo "${ARTIFACT%.*}"`
+EXT=`echo "${ARTIFACT##*.}"
+echo "Have BASE_FNAME=$BASE_FNAME and EXT=$EXT"
 
 echo "===="
 $ZIPBINARY --show-files $ARTIFACT | tail
