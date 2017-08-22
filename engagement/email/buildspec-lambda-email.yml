@@ -4,7 +4,7 @@ env:
   variables:
     source_path: "engagement/email"
     artifact_name: "lambda-email"
-    s3_bucket_name: "whiskerlabs-buildrepository"
+    s3_bucket_name: "lambda-admin-pubtest3"
     s3_bucket_directory: "engage/email"
             
 phases:
