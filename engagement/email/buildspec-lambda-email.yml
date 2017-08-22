@@ -22,6 +22,7 @@ phases:
       - virtualenv --python=python2.7 venv
       - venv/bin/pip install -r compilation/requirements.txt
       - venv/bin/pip install semver
+      - venv/bin/python nextbuildver.py --bucket_name=$s3_bucket_name --bucket_dir=$s3_bucket_directory --artifact_name=$artifact_name
       - next_ver=`venv/bin/python nextbuildver.py --bucket_name=$s3_bucket_name --bucket_dir=$s3_bucket_directory --artifact_name=$artifact_name`
       - echo "Got next_ver=$next_ver"
   build:
