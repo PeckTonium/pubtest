@@ -31,6 +31,7 @@ import re
 import sys
 
 import boto3
+import botocore
 import semver
 
 parser = argparse.ArgumentParser(description='Find next version number')
@@ -48,11 +49,14 @@ args = parser.parse_args()
 
 ###### Check parameter values
 
-s3 = boto3.resource('s3')
-buckets = [bucket.name for bucket in list(s3.buckets.all())]
-if args.bucket_name not in buckets:
+s3_client = boto3.client('s3')
+try:
+  s3_client.head_bucket(Bucket=args.bucket_name)
+except botocore.exceptions.ClientError as clerr:
   print "Error: \"bucket_name\" has an invalid value (%s)" % args.bucket_name
   exit(1)
+  
+s3 = boto3.resource('s3')
 
 ext_index = args.artifact_name.rfind(".")
 if ext_index != -1:
