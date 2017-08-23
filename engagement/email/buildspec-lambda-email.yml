@@ -27,16 +27,18 @@ phases:
   build:
     commands:
       - echo "Zipping dependencies"
-      - cd venv/lib/python2.7/site-packages && zip --quiet -9 --recurse-paths ../../../../$artifact_name.zip *
+      - cd venv/lib/python2.7/site-packages && zip --quiet -9 --recurse-paths ../../../../$artifact_name *
       - cd ../../../..
       - zip --show-files $artifact_name | tail
       - echo "Adding lambda"
       - cd ./compilation
-      - zip -9 ../$artifact_name.zip lambda_function.py
+      - zip -9 ../$artifact_name lambda_function.py
       - cd ..
       - zip --show-files $artifact_name | tail
-      - full_fname=${artifact_name}_${next_ver}.zip
+      - full_fname=${artifact_name%.*}_${next_ver}.${artifact_name##*.}
+      - # full_fname=${artifact_name}_${next_ver}.zip
       - echo "Have full artifact name=$full_fname"
+      - echo "Have full_fname=$full_fname"
       - mv $artifact_name.zip $full_fname
       - ls
   post_build:
