@@ -83,7 +83,6 @@ if not len(item_names):
 ver_index = item_names[-1].rfind("_")
 highest_existing_ver= item_names[-1][ver_index:]
 
-print "Have prefix %s and name %s" % (artifact_prefix, item_names[-1])
 if item_names[-1][:ver_index] != artifact_prefix:
   print "Error: Found no versioned files based on %s" % artifact_prefix
   exit(1)
