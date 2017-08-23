@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     source_path: "engagement/email"
-    artifact_name: "lambda-email"
+    artifact_name: "lambda-email.zip"
     s3_bucket_name: "lambda-admin-pubtest3"
     s3_bucket_directory: "engage/email"
             
