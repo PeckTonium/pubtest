@@ -4,11 +4,11 @@ nextbuildver.py
 
 Print the next build version number of the specified build artifact.
 
-The artifact_name will be used as the basis to find the correct item to version.  If the name
-has dots in it. the last dot will be expected to be the file extension, which will occur after
-the version number in the final file.  For example:
+The artifact_name will be used as the basis to find the correct item to version.  The last dot
+will be used as the file extension, which will follow the version number in the final file.
+
+For example:
   abc.tgz -> abc_0.0.5-rc.4.tgz
-  atgz -> atgz_0.0.5-rc.4
   a.b -> a_0.0.5-rc.4.b
 Note: the artifact_name must have the version following the last underscore, i.e a_this_1.2.3.tgz
 
@@ -63,8 +63,8 @@ if ext_index != -1:
       % args.artifact_name
     exit(1)
 else:
-  file_extension = None
-  file_name = args.artifact_name
+  print "Error: No file extension found in the artifact_name (%s)" % args.artifact_name
+  exit(1)
 
 # Go find what versions already exist
 
@@ -94,16 +94,14 @@ else:
   print "Error: the highest existing version number doesn't start with \"_\" (%s)" % item_names[-1]
   exit(1)
 
-if file_extension:
-  ext_index = highest_existing_ver.rfind(file_extension)
-  if ext_index == -1:
-    print "Error: the extension in the artifact_name was not found on any versioned artifacts " \
-      "(%s not in %s)" % (file_extension, item_names[-1])
-    exit(1)
-  elif ext_index:
-    highest_existing_ver = highest_existing_ver[:ext_index]
-  else:
-    print "Error: the hightest existing version "
+# Remove the extension
+ext_index = highest_existing_ver.rfind(file_extension)
+if ext_index < 1:
+  print "Error: The extension in the artifact_name was not found on any versioned artifacts " \
+    "(%s not in %s)" % (file_extension, item_names[-1])
+  exit(1)
+else:
+  highest_existing_ver = highest_existing_ver[:ext_index]
 
 try:
   parsed = dict(semver.parse(highest_existing_ver))
