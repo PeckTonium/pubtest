@@ -35,11 +35,11 @@ phases:
       - zip -9 ../$artifact_name.zip lambda_function.py
       - cd ..
       - zip --show-files $artifact_name | tail
-      - echo "\$artifact_name=$artifact_name"
-      - ls $artifact_name*
-      - mv $artifact_name.zip ${artifact_name}_${next_ver}.zip
+      - full_fname=${artifact_name}_${next_ver}.zip
+      - mv $artifact_name.zip $full_fname
       - ls
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
+      - aws s3 cp $full_fname s3://$s3_bucket_name/$s3_bucket_directory
       - # cp $artifact_name* s3.....
