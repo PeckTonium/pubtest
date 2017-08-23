@@ -41,5 +41,5 @@ phases:
   post_build:
     commands:
       - echo "Copying to S3 build repo $s3_bucket"
-      - aws s3 cp $full_fname s3://$s3_bucket_name/$s3_bucket_directory
+      - aws s3 cp $full_fname s3://$s3_bucket_name/$s3_bucket_directory/$full_fname
       - # cp $artifact_name* s3.....
