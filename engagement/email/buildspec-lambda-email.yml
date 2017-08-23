@@ -36,6 +36,7 @@ phases:
       - cd ..
       - zip --show-files $artifact_name | tail
       - full_fname=${artifact_name}_${next_ver}.zip
+      - echo "Have full artifact name=$full_name"
       - mv $artifact_name.zip $full_fname
       - ls
   post_build:
